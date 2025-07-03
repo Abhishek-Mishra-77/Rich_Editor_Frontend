@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Disaster Recovery Plan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px 32px;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        .drp-header {
+            background: linear-gradient(90deg, #f1f5f9 0%, #e0e7ef 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(30, 64, 175, 0.07);
+            padding: 28px 24px 18px 24px;
+            margin-bottom: 32px;
+        }
+
+        .drp-header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .drp-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 1.08rem;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .drp-meta>div {
+            min-width: 180px;
+        }
+
+        .drp-confidential {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: #fff0f1;
+            border-left: 6px solid #e11d48;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 18px;
+            color: #b91c1c;
+            font-size: 1.08rem;
+            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.04);
+        }
+
+        .drp-lock {
+            font-size: 2.1rem;
+            margin-top: 2px;
+        }
+
+        h2 {
+            color: #2a3b4c;
+            font-size: 1.5em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.2em;
+            margin-top: 2em;
+            margin-bottom: 0.7em;
+        }
+
+        h3 {
+            color: #2a3b4c;
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            line-height: 1.7;
+            margin: 0.7em 0;
+        }
+
+        ul,
+        ol {
+            margin: 0.7em 0 1.5em 1.5em;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .section {
+            margin-bottom: 2.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            background: #fafbfc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(30, 64, 175, 0.04);
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 1em;
+        }
+
+        th {
+            background: #e5e7eb;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 3em;
+            padding-top: 2em;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+
+            .drp-header {
+                padding: 12px 6px;
+            }
+
+            .drp-header h1 {
+                font-size: 1.3em;
+            }
+
+            .drp-meta {
+                gap: 10px;
+                font-size: 0.98rem;
+            }
+
+            .drp-confidential {
+                font-size: 0.98rem;
+                padding: 8px 6px;
+            }
+
+            th,
+            td {
+                font-size: 0.95em;
+            }
+        }
+
+        /* Print styles must be outside of other media queries! */
+        @media print {
+
+            body,
+            html {
+                background: #fff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0.1in !important;
+                /* minimal padding */
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background: #fff !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="drp-header">
+            <h1>Disaster Recovery Plan 1 2 3</h1>
+            <div class="drp-meta">
+                <div><strong>Prepared by:</strong> Helios Resiliency Platform</div>
+                <div><strong>Report Period:</strong> Q2 FY2025</div>
+                <div><strong>Version:</strong> v1.0</div>
+                <div><strong>Date:</strong> June 27, 2025</div>
+            </div>
+            <div class="drp-confidential">
+                <span class="drp-lock">🔒</span>
+                <div>
+                    <strong>CONFIDENTIAL — For Internal Use Only</strong><br>
+                    <span style="font-weight: 400;">
+                        This document contains sensitive and proprietary information intended exclusively for internal
+                        stakeholders.
+                        Any unauthorized access, reproduction, or distribution is strictly prohibited and may lead to
+                        legal or disciplinary actions.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li>Revision History</li>
+                <li>Information Technology Statement of Intent</li>
+                <li>Policy Statement</li>
+                <li>Objectives</li>
+                <li>Key Personnel Contact Info</li>
+                <li>Notification Calling Tree</li>
+                <li>External Contacts</li>
+                <li>Plan Overview</li>
+                <li>Emergency</li>
+                <li>Media</li>
+                <li>Insurance</li>
+                <li>Financial and Legal Issues</li>
+                <li>DRP Exercising</li>
+                <li>Appendices &amp; Forms</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Information Technology Statement of Intent</h2>
+            <p>This document delineates our policies and procedures for technology disaster recovery, as well as our
+                process-level plans for recovering critical technology platforms and the telecommunications
+                infrastructure. In the event of an actual emergency situation, modifications to this document may be
+                made to ensure physical safety of our people, our systems, and our data.</p>
+            <p>Our mission is to ensure information system uptime, data integrity and availability, and business
+                continuity.</p>
+        </div>
+
+        <div class="section">
+            <h2>Policy Statement</h2>
+            <ul>
+                <li>The company shall develop a comprehensive IT disaster recovery plan.</li>
+                <li>A formal risk assessment shall be undertaken to determine the requirements for the disaster recovery
+                    plan.</li>
+                <li>The disaster recovery plan should cover all essential and critical infrastructure elements, systems
+                    and networks, in accordance with key business activities.</li>
+                <li>The disaster recovery plan should be periodically tested in a simulated environment to ensure that
+                    it can be implemented in emergency situations and that the management and staff understand how it is
+                    to be executed.</li>
+                <li>All staff must be made aware of the disaster recovery plan and their own respective roles.</li>
+                <li>The disaster recovery plan is to be kept up to date to take into account changing circumstances.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Objectives</h2>
+            <ul>
+                <li>Develop, test and document a well-structured and easily understood plan to help the company recover
+                    as quickly and effectively as possible from an unforeseen disaster or emergency.</li>
+                <li>Ensure all employees fully understand their duties in implementing such a plan.</li>
+                <li>Ensure operational policies are adhered to within all planned activities.</li>
+                <li>Ensure proposed contingency arrangements are cost-effective.</li>
+                <li>Consider implications on other company sites.</li>
+                <li>Disaster recovery capabilities as applicable to key customers, vendors and others.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Key Personnel Contact Info</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Work</th>
+                        <th>Mobile</th>
+                        <th>Email Address</th>
+                        <th>Alternate Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>IT Manager</td>
+                        <td>555-1234</td>
+                        <td>555-5678</td>
+                        <td>john.doe@company.com</td>
+                        <td>johndoe@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Rowm</td>
+                        <td>Hr Manager</td>
+                        <td>555-1234</td>
+                        <td>555-5678</td>
+                        <td>rown.doe@company.com</td>
+                        <td>rowndoe@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Notification Calling Tree</h2>
+            <div class="form-section">
+                <p>Person Identifying Incident: ____________________________</p>
+                <p>Next Contact: ____________________________</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Plan Overview</h2>
+            <h3>Plan Updating</h3>
+            <p>All changes to the DRP must be fully tested and amendments made to training materials. Use formalized
+                change control procedures under the IT Director.</p>
+            <h3>Plan Documentation Storage</h3>
+            <p>Copies of this plan will be stored in secure locations. Each member of senior management and the Disaster
+                Recovery Team will be issued a copy.</p>
+            <h3>Backup Strategy</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Key Business Process</th>
+                        <th>Backup Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Payroll</td>
+                        <td>Daily offsite backup, mirrored site</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Risk Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Potential Disaster</th>
+                        <th>Probability Rating</th>
+                        <th>Impact Rating</th>
+                        <th>Description &amp; Remedial Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#external_contacts}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{title}}</td>
+                        <td>{{work}}</td>
+                        <td>{{mobile}}</td>
+                        <td>{{email_address}}</td>
+                        <td>{{alternate_email}}</td>
+                    </tr>
+                    {{/external_contacts}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            Document Classification: CONFIDENTIAL &copy; 2025 Trillisent. All rights reserved.<br>
+            Courtesy of Micro Focus, Inc. | Acknowledgement to Paul Kirvan of searchdisasterrecovery.com
+        </div>
+    </div>
+</body>
+
+</html>
