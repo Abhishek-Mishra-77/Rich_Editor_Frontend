@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business Continuity Policy</title>
+  <style>
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .page {
+      width: 794px; /* A4 width at 96dpi */
+      min-height: 1123px; /* A4 height at 96dpi */
+      margin: 40px auto 40px auto;
+      background: #fff;
+      box-shadow: 0 0 8px #bbb;
+      padding: 60px 60px 100px 60px;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .logo img {
+      height: 64px;
+      max-width: 220px;
+      object-fit: contain;
+    }
+    .title {
+      text-align: center;
+      font-size: 2.1em;
+      font-weight: bold;
+      margin-bottom: 38px;
+      letter-spacing: 1px;
+      color: #2c3e50;
+    }
+    .meta-box {
+      width: 440px;
+      margin: 0 auto 32px auto;
+      background: #f7f7f7;
+      border-radius: 10px;
+      border: 1.5px solid #b0b0b0;
+      padding: 22px 30px 12px 30px;
+      font-size: 1.08em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .meta-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .meta-box td {
+      padding: 6px 10px 6px 0;
+      vertical-align: top;
+    }
+    .meta-box .label {
+      font-weight: bold;
+      width: 120px;
+      color: #222;
+      letter-spacing: 0.5px;
+    }
+    .confidential-box {
+      border: 2px solid #e53935;
+      border-radius: 10px;
+      background: #fff;
+      padding: 16px 22px 12px 22px;
+      margin: 36px auto 24px auto;
+      width: 92%;
+      box-sizing: border-box;
+    }
+    .confidential-title {
+      color: #e53935;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 1.08em;
+      letter-spacing: 0.5px;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #222;
+      margin: 36px 0 20px 0;
+    }
+    .footer {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      bottom: 40px;
+      font-size: 1em;
+      color: #222;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .footer-small {
+      text-align: center;
+      font-size: 0.92em;
+      color: #888;
+      margin-top: 10px;
+    }
+    .bottom-bar {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-top: 44px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+    .policy-content h2 {
+      font-size: 1.4em;
+      color: #34495e;
+      margin-top: 2em;
+    }
+    .policy-content h3 {
+      font-size: 1.1em;
+      color: #555;
+      margin-top: 1.5em;
+    }
+    .policy-content .section {
+      margin-bottom: 2em;
+    }
+    .policy-content ul,
+    .policy-content ol {
+      margin-left: 2em;
+    }
+    /* Editable styles */
+    [contenteditable="true"]:focus {
+      outline: 2px solid #3498db;
+      background: #f0f8ff;
+    }
+    /* Print styles */
+    @media print {
+      body {
+        background: none;
+      }
+      .page {
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1 -->
+  <div class="page" contenteditable="true">
+    <div class="logo">
+      <img src="{{logo_url}}" alt="Organization Logo">
+    </div>
+    <div class="title">Business Continuity Policy</div>
+    <div class="meta-box">
+      <table>
+        <tr>
+          <td class="label">Prepared by:</td>
+          <td>{{prepared_by}}</td>
+        </tr>
+        <tr>
+          <td class="label">Report Period:</td>
+          <td>{{report_period}}</td>
+        </tr>
+        <tr>
+          <td class="label">Version:</td>
+          <td>{{version}}</td>
+        </tr>
+        <tr>
+          <td class="label">Date:</td>
+          <td>{{date}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="confidential-box">
+      <div class="confidential-title">CONFIDENTIAL — For Internal Use Only</div>
+      <div>
+        This document contains sensitive and proprietary information intended exclusively for internal stakeholders. Any unauthorized access, reproduction, or distribution is strictly prohibited and may lead to legal or disciplinary actions.
+      </div>
+    </div>
+    <hr>
+    <div class="footer">
+      Prepared by: Helios Resiliency Platform <span class="page-num">1</span> of <span class="total-pages">6</span>
+    </div>
+  </div>
+  <!-- Page 2 -->
+  <div class="page policy-content" contenteditable="true">
+    <div class="section">
+      <h2>1. Introduction</h2>
+      <p>
+        The intent of this policy is to establish and support a formal Business Continuity Management ({{organization_abbreviation}}) program framework to enable {{organization_abbreviation}} to continue business operations during foreseen or unforeseen events that impact business processes.
+      </p>
+      <!-- ...rest of your content... -->
+    </div>
+    <div class="footer">
+      Prepared by: Helios Resiliency Platform <span class="page-num">2</span> of <span class="total-pages">6</span>
+    </div>
+  </div>
+  <!-- Repeat .page for each page, incrementing page-num -->
+</body>
+<script>
+  // Dynamically set total pages
+  document.querySelectorAll('.total-pages').forEach(el => el.textContent = document.querySelectorAll('.page').length);
+</script>
+</html>

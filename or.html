@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Business Continuity Policy</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #222;
+            line-height: 1.4;
+        }
+
+        .page {
+            width: 794px;
+            /* A4 width */
+            min-height: 1123px;
+            /* A4 height */
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 60px;
+            box-sizing: border-box;
+            page-break-after: always;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .logo img {
+            height: 64px;
+            max-width: 220px;
+            object-fit: contain;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.1em;
+            font-weight: bold;
+            margin-bottom: 38px;
+            letter-spacing: 1px;
+            color: #2c3e50;
+        }
+
+        .meta-box {
+            width: 440px;
+            margin: 0 auto 32px auto;
+            background: #f7f7f7;
+            border-radius: 10px;
+            border: 1.5px solid #b0b0b0;
+            padding: 22px 30px 12px 30px;
+            font-size: 1.08em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .meta-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .meta-box td {
+            padding: 6px 10px 6px 0;
+            vertical-align: top;
+        }
+
+        .meta-box .label {
+            font-weight: bold;
+            width: 120px;
+            color: #222;
+            letter-spacing: 0.5px;
+        }
+
+        .confidential-box {
+            border: 2px solid #e53935;
+            border-radius: 10px;
+            background: #fff;
+            padding: 16px 22px 12px 22px;
+            margin: 36px auto 24px auto;
+            width: 92%;
+            box-sizing: border-box;
+        }
+
+        .confidential-title {
+            color: #e53935;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-content {
+            text-align: center;
+            font-size: 1em;
+            color: #222;
+            margin-top: 44px;
+            margin-bottom: 12px;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-small {
+            text-align: center;
+            font-size: 0.92em;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #222;
+            margin: 36px 0 20px 0;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 60px;
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        /* Policy Content Styles */
+        .policy-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .policy-content h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            margin-bottom: 0.5em;
+            padding-bottom: 10px;
+        }
+
+        .policy-content h2 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+
+        .policy-content h3 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: bold;
+        }
+
+        .policy-content .section {
+            margin-bottom: 2em;
+        }
+
+        .policy-content ul,
+        .policy-content ol {
+            margin-left: 2em;
+            margin-bottom: 1em;
+        }
+
+        .policy-content li {
+            margin-bottom: 0.5em;
+        }
+
+        .policy-content p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        /* Editable content styling */
+        [contenteditable="true"]:focus {
+            outline: 2px solid #3498db;
+            background-color: rgba(52, 152, 219, 0.05);
+            border-radius: 3px;
+        }
+
+        [contenteditable="true"]:hover {
+            background-color: rgba(52, 152, 219, 0.02);
+            border-radius: 3px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+
+            .page-footer {
+                position: fixed;
+                bottom: 20px;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 900px) {
+            .page {
+                width: 95%;
+                margin: 10px auto;
+                padding: 40px 30px;
+            }
+
+            .meta-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page 1 - Cover Page -->
+    <div class="page">
+        <div class="container" contenteditable="true">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgMjAwIDY0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjY0IiBmaWxsPSIjMmMzZTUwIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5PUkdBTklaQVRJT04gTE9HTzwvdGV4dD4KPHN2Zz4="
+                    alt="Organization Logo">
+            </div>
+            <div class="title">Business Continuity Policy</div>
+            <div class="meta-box">
+                <table>
+                    <tr>
+                        <td class="label">Prepared by:</td>
+                        <td>Risk Management Team</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Report Period:</td>
+                        <td>Annual Review 2024</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Version:</td>
+                        <td>2.1</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Date:</td>
+                        <td>July 2024</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="confidential-box">
+                <div class="confidential-title">CONFIDENTIAL — For Internal Use Only</div>
+                <div style="font-size:1em;">
+                    This document contains sensitive and proprietary information intended exclusively for internal
+                    stakeholders. Any unauthorized access, reproduction, or distribution is strictly prohibited and may
+                    lead
+                    to legal or disciplinary actions.
+                </div>
+            </div>
+            <hr>
+            <div class="footer-content">
+                This document contains proprietary and confidential information.<br>
+                Distribution is restricted to authorized personnel only.
+            </div>
+            <div class="footer-small">
+                Document Classification: <b>CONFIDENTIAL</b><br>
+                © 2024 <b>Your Organization Name</b>. All rights reserved.
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">1 of 6</span>
+        </div>
+    </div>
+
+    <!-- Page 2 - Policy Content Start -->
+    <div class="page">
+        <div class="policy-content" contenteditable="true">
+            <div class="section">
+                <h2>1. Introduction</h2>
+                <p>
+                    The intent of this policy is to establish and support a formal Business Continuity Management
+                    (BCM) program framework to enable the organization to continue
+                    business operations during foreseen or unforeseen events that impact business processes.
+                </p>
+                <p>
+                    This policy is the foundation of the organization's Business Continuity Management program.
+                    This document establishes minimum requirements and supporting strategies to ensure that the business
+                    can
+                    provide essential business processes in the event of a disruption to the organization, no
+                    matter the cause (Manmade or Nature), including:
+                </p>
+                <ul>
+                    <li>Order Processing</li>
+                    <li>Receiving</li>
+                    <li>Distribution and Logistics</li>
+                    <li>Finance</li>
+                    <li>Human Resources</li>
+                    <li>Legal</li>
+                    <li>Facilities</li>
+                    <li>Information Technology</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>2. Definitions</h2>
+                <p>
+                    Refer to the Business Continuity Plan &amp; Disaster Recovery Glossary in the Business Continuity
+                    Standard for terms used in this and other Business Continuity Management, Disaster Recovery and
+                    Crisis Management
+                    policies.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>3. Compliance &amp; Reporting</h2>
+                <p>
+                    Business Continuity Management (BCM) Program Governance
+                </p>
+                <ul>
+                    <li>
+                        A policy has been developed, and documented detailing how the organization will manage,
+                        and control identified risks to the Business Continuity (BC) of the Enterprise.
+                    </li>
+                    <li>
+                        The BCM policy will be reviewed and updated at least every 12 months or as
+                        operational changes occur.
+                    </li>
+                    <li>
+                        Business Continuity Plans (BCP) must be developed and maintained for each
+                        critical functional area of the business as determined by the BIA (Business Impact Analysis).
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">2 of 6</span>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <div class="policy-content" contenteditable="true">
+            <div class="section">
+                <ul>
+                    <li>
+                        Plans must be reviewed and updated on an annual basis to reflect the current operating
+                        environment.
+                    </li>
+                    <li>
+                        The BCM testing program and test results must be reviewed yearly and
+                        deficiencies prioritized and addressed. These tests include Business Continuity, Disaster
+                        Recovery
+                        and Crisis Management.
+                    </li>
+                    <li>
+                        Employees must be trained and made aware of their roles in the implementation of the Business
+                        Continuity, Disaster Recovery and Crisis Management Plans.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>4. Identification of Key Stakeholders</h2>
+                <ul>
+                    <li>A list of key internal and external stakeholders are identified, documented and maintained</li>
+                    <li>The Business Continuity (BC) Stakeholder list, consisting of internal stakeholders, is reviewed
+                        and,
+                        if necessary updated, minimally every 12 months</li>
+                    <li>The External key Stakeholder list will be reviewed and, if necessary updated, at least once in
+                        every
+                        12 months</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>5. Responsibilities</h2>
+                <p>
+                    The BC Program Executive (or designee) is responsible for:
+                </p>
+                <ul>
+                    <li>Identifying and maintaining a list of internal BC stakeholders responsible for each of the
+                        following
+                        areas of planning:
+                        <ul>
+                            <li>Site Level</li>
+                            <li>Business Unit Level</li>
+                            <li>Functional Level</li>
+                            <li>Vendor Level</li>
+                        </ul>
+                    </li>
+                    <li>Ensuring the requirements for a successful BC Program are in place:
+                        <ul>
+                            <li>Senior Management Sponsorship</li>
+                            <li>Program funding (Budget)</li>
+                            <li>BIA (initial and yearly)</li>
+                            <li>Incident (IT Security)/Crisis Management</li>
+                            <li>Disaster Recovery Planning (technology)</li>
+                            <li>Critical Vendors are identified and integrated into the BC Program planning efforts</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">3 of 6</span>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page">
+        <div class="policy-content" contenteditable="true">
+            <div class="section">
+                <ul>
+                    <li>Maintain the Risk Register for sites serviced by the organization</li>
+                    <li>Provide Risk and Impact analysis to the BC Steering Committee related to Natural and Manmade
+                        potential or active threats</li>
+                    <li>Develop, publish and collaborate on Testing schedules for Business Continuity (BC), Disaster
+                        Recovery (DR) and Crisis Management (CM).</li>
+                    <li>Provide Business Plan Owners with guidance and assistance in development, review and updates to
+                        the
+                        BC, DR, and CM Plans (in Fusion BC Software)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>6. The BC Executive Sponsor is responsible for:</h2>
+                <ul>
+                    <li>Review of the BC, DR and CM Program efforts</li>
+                    <li>Provide a point of escalation for roadblocks to the Program</li>
+                    <li>Provide leadership and communicate the needs of the organization to the Program Executive
+                        (Change, Additions, Deletions and Direction)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>7. The BC/DR/CM Steering Committee is responsible for:</h2>
+                <ul>
+                    <li>Publishing policy and standards/guidance for Business Continuity, Disaster Recovery and Crisis
+                        Management.</li>
+                    <li>Approving the list of internal BC, DR and CM stakeholders</li>
+                    <li>Identifying and maintaining a list of key external stakeholders' such as investors, regulators,
+                        ratings agencies, distributors, and consumers</li>
+                    <li>Provide a point of escalation for planning, training, testing and mitigation efforts</li>
+                    <li>Review and Approve the Business Continuity (BC) Program Risk Register as changes occur or at
+                        least
+                        every 12 Months</li>
+                    <li>Review and approval of Program efforts (BC/DR/CM Plans, BIA and Testing)
+                        yearly</li>
+                    <li>Allocating knowledgeable personnel and enough financial resources to properly implement and
+                        manage
+                        the program.</li>
+                    <li>Reporting status and issues to Risk Committee</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">4 of 6</span>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page">
+        <div class="policy-content" contenteditable="true">
+            <div class="section">
+                <h2>8. The BC Plan Owner (or Designee) is responsible for:</h2>
+                <ul>
+                    <li>Validate that all Departmental Staff have reviewed and attest to completion of Training in BC,
+                        DR
+                        (as necessary) and CM according to assigned responsibilities (identified in the Plans for the
+                        department/function</li>
+                    <li>Conducting yearly reviews and updates of the Department plans to ensure they correctly reflect
+                        the
+                        manner functions are performed. Review and as needed modify the Business Impacts
+                        (BIA) on the functions performed, the resources required to maintain or
+                        recover the function and that the Recovery Time Objectives (RTO) and
+                        Recovery Point Objectives (RPO) are met</li>
+                    <li>Identification and review of internal and external dependencies for their functions both up and
+                        downstream</li>
+                    <li>Review and modify as necessary the departments Crisis Call list</li>
+                    <li>Participate and confirm resources are made available for yearly Business Continuity, Disaster
+                        Recovery (as needed) and Crisis Management Testing efforts</li>
+                    <li>Review and provide approval for their respective BC Plans yearly</li>
+                    <li>To Review the Risk Register elements for their office to understand the areas of concern.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>9. Compliance</h2>
+                <p>
+                    All employees and critical vendors must comply with the policies and procedures developed by the
+                    Business Continuity, Disaster Recovery and Crisis Management Program Teams.
+                </p>
+                <p>
+                    Communication and understanding of the requirements associated with the Business Continuity Disaster
+                    Recovery and Crisis Management program is validated through testing and recorded for all users. The
+                    Business Continuity Program is subject to internal and external audits, the results of which will be
+                    provided to
+                    the Risk Committee by the Executive Sponsor or Designee.
+                </p>
+                <p>
+                    The organization will, at a minimum, assess and confirm the Business Continuity Plans
+                    (BCPs) of its critical vendors (IT and Line of Business) by reviewing the relevant documents, such
+                    as the vendor's
+                    Crisis Management Plan (CMP Reports etc.). If these documents are not
+                    available, then the organization may request a Business Continuity audit.
+                </p>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">5 of 6</span>
+        </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page">
+        <div class="policy-content" contenteditable="true">
+            <div class="section">
+                <h2>10. Policy Exceptions</h2>
+                <p>
+                    Any requests for exceptions to this policy must be submitted in writing to the BC Program Executive
+                    one
+                    month prior to the date of the expected exception. Exception requests will be reviewed on a
+                    case-by-case
+                    basis and will be authorized only after written approval from the BC Steering Committee.
+                </p>
+                <p>
+                    The list of exceptions will be reviewed annually by the BC Steering Committee and will be used for
+                    potential amendments to this policy.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>11. Policy Maintenance</h2>
+                <p>
+                    The BC Program Executive and BC Steering Committee must review and if necessary, update this policy
+                    at
+                    least every 12 months.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>12. Escalation Process</h2>
+                <p>
+                    If you suspect any potential or actual violations of law or corporate policies, it is your
+                    obligation to
+                    contact the organization's Business Continuity Executive.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>13. Violation of this Policy</h2>
+                <p>
+                    Failure to comply with this policy may result in disciplinary action up to and including termination
+                    of
+                    employment or contract.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>14. Training &amp; Awareness</h2>
+                <p>
+                    Organization employees and key stakeholders in the BC Program must be aware of the role
+                    they play in development, management and role they are assigned in the event of a crisis affecting
+                    or
+                    posing a threat to the organization. All assigned stakeholders involved must have received enough
+                    training to ensure they understand their specific duties and roles in recovering from any crisis.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>15. Appendix A – References</h2>
+            </div>
+
+            <div class="section">
+                <h2>16. Relevant Standards</h2>
+                <ul>
+                    <li>ISO22301 International (Business Continuity Standard)</li>
+                    <li>ISO 27001 &amp; 27002 International (Security Standard)</li>
+                    <li>ISO 3100 International (Risk Management Standard)</li>
+                    <li>Code of Federal Regulations (CFR) 40</li>
+                    <li>NFPA1660:2024 (US) (Business Continuity Standard)</li>
+                    <li>BS/EN/ISO 22301:2024 Business Continuity Management Systems</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-footer">
+            <span>Prepared by: Helios Resiliency Platform</span>
+            <span class="page-number">6 of 6</span>
+        </div>
+    </div>
+
+    <script>
+        // Auto-update total page count
+        document.addEventListener('DOMContentLoaded', function () {
+            const pages = document.querySelectorAll('.page');
+            const totalPages = pages.length;
+
+            pages.forEach((page, index) => {
+                const pageNumber = page.querySelector('.page-number');
+                if (pageNumber) {
+                    pageNumber.textContent = `${index + 1} of ${totalPages}`;
+                }
+            });
+        });
+
+        // Optional: Add page numbering update when content changes
+        function updatePageNumbers() {
+            const pages = document.querySelectorAll('.page');
+            const totalPages = pages.length;
+
+            pages.forEach((page, index) => {
+                const pageNumber = page.querySelector('.page-number');
+                if (pageNumber) {
+                    pageNumber.textContent = `${index + 1} of ${totalPages}`;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
