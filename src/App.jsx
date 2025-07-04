@@ -758,9 +758,10 @@
 
 
 
-// src/App.js
+// // src/App.js
 import React, { useState, useEffect, useRef } from 'react';
 import grapesjs from 'grapesjs';
+import grapesjsTable from 'grapesjs-table';
 import 'grapesjs/dist/css/grapes.min.css';
 
 const API_BASE = 'http://localhost:7000/api/v1/organization/planbuilderassessment';
@@ -815,7 +816,25 @@ const App = () => {
             height: '100vh',
             components: combinedHtml,
             storageManager: false,
-            plugins: ['gjs-preset-webpage'],
+            plugins: ['gjs-preset-webpage', 'grapesjsTable',],
+            blockManager: {
+              appendTo: '.myblocks',
+              blocks: [
+                {
+                  id: 'image',
+                  label: 'Image',
+                  media: `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z" />
+        </svg>`,
+                  // Use `image` component
+                  content: { type: 'image' },
+                  // The component `image` is activatable (shows the Asset Manager).
+                  // We want to activate it once dropped in the canvas.
+                  activate: true,
+                  // select: true, // Default with `activate: true`
+                },
+              ],
+            },
           });
         } else {
           editorRef.current.setComponents(combinedHtml);
@@ -829,33 +848,57 @@ const App = () => {
       setIsLoading(false);
     }
   };
-const handleSave = () => {
-  if (!editorRef.current) return showStatus('Editor not ready', 'error');
+  // const handleSave = () => {
+  //   if (!editorRef.current) return showStatus('Editor not ready', 'error');
 
-  const rawHtml = editorRef.current.getHtml();
-  const css = editorRef.current.getCss();
+  //   const rawHtml = editorRef.current.getHtml();
+  //   const css = editorRef.current.getCss();
 
-  // Remove GrapesJS metadata
-  const cleanedHtml = rawHtml.replace(/\s(data-gjs-[^=]+|contenteditable)="[^"]*"/g, '');
+  //   // Remove GrapesJS metadata
+  //   const cleanedHtml = rawHtml.replace(/\s(data-gjs-[^=]+|contenteditable)="[^"]*"/g, '');
 
-  const fullHtml = `
+  //   const fullHtml = `
+  //     <html>
+  //       <head>
+  //         <style>${css}</style>
+  //       </head>
+  //       <body>
+  //         <div class="container">
+  //           ${cleanedHtml}
+  //         </div>
+  //       </body>
+  //     </html>
+  //   `;
+
+  //   mergedHtmlForPreview.current = fullHtml;
+  //   setSections([{ title: 'Merged', content: cleanedHtml }]);
+  //   showStatus('Content saved. Now you can preview or publish.', 'success');
+  // };
+
+  const handleSave = () => {
+    if (!editorRef.current) return showStatus('Editor not ready', 'error');
+
+    const rawHtml = editorRef.current.getHtml();
+    const css = editorRef.current.getCss();
+
+    // Remove GrapesJS metadata
+    const cleanedHtml = rawHtml.replace(/\s(data-gjs-[^=]+|contenteditable)="[^"]*"/g, '');
+
+    const fullHtml = `
     <html>
       <head>
         <style>${css}</style>
       </head>
       <body>
-        <div class="container">
-          ${cleanedHtml}
-        </div>
+        ${cleanedHtml}
       </body>
     </html>
   `;
 
-  mergedHtmlForPreview.current = fullHtml;
-  setSections([{ title: 'Merged', content: cleanedHtml }]);
-  showStatus('Content saved. Now you can preview or publish.', 'success');
-};
-
+    mergedHtmlForPreview.current = fullHtml;
+    setSections([{ title: 'Merged', content: cleanedHtml }]);
+    showStatus('Content saved. Now you can preview or publish.', 'success');
+  };
 
   const previewDocument = async () => {
     if (!isDocumentLoaded || !sections.length) return showStatus('Please load a document first', 'error');
@@ -871,7 +914,7 @@ const handleSave = () => {
           Authorization: AUTH_TOKEN,
         },
         body: JSON.stringify({
-         html: mergedHtmlForPreview.current, 
+          html: mergedHtmlForPreview.current,
           filename: `plan_v${currentVersion}`,
           card_id: cardId.trim(),
         }),
@@ -958,3 +1001,4 @@ const handleSave = () => {
 };
 
 export default App;
+
