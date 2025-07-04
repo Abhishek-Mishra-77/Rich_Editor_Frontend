@@ -829,18 +829,33 @@ const App = () => {
       setIsLoading(false);
     }
   };
+const handleSave = () => {
+  if (!editorRef.current) return showStatus('Editor not ready', 'error');
 
-  const handleSave = () => {
-    if (!editorRef.current) return showStatus('Editor not ready', 'error');
-    const html = editorRef.current.getHtml();
-    const css = editorRef.current.getCss();
+  const rawHtml = editorRef.current.getHtml();
+  const css = editorRef.current.getCss();
 
-    const fullHtml = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
-    mergedHtmlForPreview.current = fullHtml;
+  // Remove GrapesJS metadata
+  const cleanedHtml = rawHtml.replace(/\s(data-gjs-[^=]+|contenteditable)="[^"]*"/g, '');
 
-    setSections([{ title: 'Merged', content: html }]);
-    showStatus('Content saved in memory. Now you can preview or publish.', 'success');
-  };
+  const fullHtml = `
+    <html>
+      <head>
+        <style>${css}</style>
+      </head>
+      <body>
+        <div class="container">
+          ${cleanedHtml}
+        </div>
+      </body>
+    </html>
+  `;
+
+  mergedHtmlForPreview.current = fullHtml;
+  setSections([{ title: 'Merged', content: cleanedHtml }]);
+  showStatus('Content saved. Now you can preview or publish.', 'success');
+};
+
 
   const previewDocument = async () => {
     if (!isDocumentLoaded || !sections.length) return showStatus('Please load a document first', 'error');
@@ -856,7 +871,7 @@ const App = () => {
           Authorization: AUTH_TOKEN,
         },
         body: JSON.stringify({
-          html: mergedHtmlForPreview.current,
+         html: mergedHtmlForPreview.current, 
           filename: `plan_v${currentVersion}`,
           card_id: cardId.trim(),
         }),
