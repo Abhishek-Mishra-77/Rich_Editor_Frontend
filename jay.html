@@ -1,191 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Business Continuity Policy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disaster Recovery Plan</title>
   <style>
-    body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #222; margin: 40px; background: #fff; }
-    .header-img { display: block; margin: 0 auto 30px auto; }
-    .title { font-size: 28pt; font-weight: bold; text-align: left; margin-bottom: 10px; }
-    .subtitle { font-size: 14pt; color: #595959; margin-bottom: 30px; }
-    .confidential { color: #ff0000; font-weight: bold; margin-bottom: 10px; }
-    .notice { font-size: 10pt; color: #444; margin-bottom: 20px; }
-    h1 { font-size: 16pt; color: #0f4761; margin-top: 40px; margin-bottom: 10px; }
-    h2, h3, h4 { color: #0f4761; }
-    ol, ul { margin-left: 30px; }
-    li { margin-bottom: 6px; }
-    .footer { font-size: 10pt; color: #888; margin-top: 40px; text-align: right; }
-    .prepared { font-size: 10pt; color: #888; margin-top: 40px; }
-    .page-break { page-break-before: always; }
-    @media (max-width: 600px) {
-      body { margin: 10px; }
-      .header-img { width: 100%; height: auto; }
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fafafa;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    .document-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-container img {
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+
+    .document-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    .header-images img {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Confidential Notice */
+    .confidential-notice {
+      border: 2px solid #d32f2f;
+      border-radius: 8px;
+      background-color: #ffebee;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #b71c1c;
+      font-weight: bold;
+    }
+
+    .confidential-description {
+      font-weight: normal;
+      color: #b71c1c;
+      margin-top: 0.5rem;
+      text-align: justify;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Document Info */
+    .document-info {
+      background-color: #f5f5f5;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    .document-info strong {
+      font-weight: bold;
+      color: #000;
+      font-style: normal;
+    }
+
+    /* Table of Contents */
+    .toc {
+      margin-bottom: 3rem;
+    }
+
+    .toc h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.3rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .toc li {
+      padding: 8px 12px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    .toc li:last-child {
+      border-bottom: none;
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 500;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h1 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    section p,
+    section ul,
+    section ol {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* Calling Tree */
+    .calling-tree {
+      display: flex;
+      align-items: flex-start;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tree-node {
+      position: relative;
+      margin: 0 10px 20px;
+      text-align: center;
+    }
+
+    .node-box {
+      border: 2px solid #333;
+      background-color: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      line-height: 1.2;
+      padding: 8px;
+      border-radius: 6px;
+      min-width: 80px;
+      min-height: 50px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .node-box.root {
+      min-width: 120px;
+      min-height: 80px;
+      font-weight: bold;
+      background-color: #e3f2fd;
+      border-color: #1976d2;
+      color: #0d47a1;
+    }
+
+    .node-box.small {
+      min-width: 60px;
+      min-height: 30px;
+    }
+
+    .node-box.medium {
+      min-width: 80px;
+      min-height: 40px;
+    }
+
+    /* Branch lines */
+    .tree-branches {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 20px;
+    }
+
+    .branch-line {
+      background-color: #333;
+      position: absolute;
+    }
+
+    .main-line {
+      width: 30px;
+      height: 2px;
+      top: 40px;
+      left: 0;
+    }
+
+    .branch-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin: 10px 0;
+    }
+
+    .horizontal {
+      width: 20px;
+      height: 2px;
+      margin-right: 10px;
+      background-color: #333;
+    }
+
+    .vertical-up {
+      width: 2px;
+      height: 20px;
+      position: absolute;
+      left: 80px;
+      top: -10px;
+      background-color: #333;
+    }
+
+    .vertical-down {
+      width: 2px;
+      height: 20px;
+      position: absolute;
+      left: 80px;
+      top: 30px;
+      background-color: #333;
+    }
+
+    .branch-group .tree-node {
+      margin: 0 10px;
+    }
+
+    .plus-sign {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+      color: #1976d2;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .document-title {
+        font-size: 1.5rem;
+      }
+
+      .toc ul {
+        max-height: 250px;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+
+      .calling-tree {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tree-branches {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      .toc li {
+        padding: 6px 8px;
+      }
+
+      table {
+        font-size: 0.85rem;
+      }
+
+      .node-box {
+        font-size: 0.75rem;
+        min-width: 60px;
+        min-height: 40px;
+      }
+
+      .node-box.root {
+        min-width: 100px;
+        min-height: 60px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <img src="https://myfiles.space/user_files/temporary/68664b03e29b40.69041502/1751534339_helios-bc-policy-template/1751534339_helios-bc-policy-template-1.png" alt="Helios Logo" class="header-img" width="303" height="76">
-  <div class="title">Business Continuity Policy</div>
-  <div class="confidential">CONFIDENTIAL — For Internal Use Only</div>
-  <div class="notice">
-    This document contains sensitive and proprietary information intended exclusively for internal stakeholders. Any unauthorized access, reproduction, or distribution is strictly prohibited and may lead to legal or disciplinary actions.<br>
-    <br>
-    This document contains proprietary and confidential information. Distribution is restricted to authorized personnel only.<br>
-    <br>
-    Document Classification: <strong>CONFIDENTIAL</strong> &copy; 2025 Trillisent. All rights reserved.
-  </div>
+  <div class="container">
+    <header class="document-header">
+      <div class="logo-container">
+        <img src="https://myfiles.space/user_files/277678_9bdb6c67f274d37c/1751599563_helios-bc-policy-template/1751599563_helios-bc-policy-template-1.png"
+          alt="Company Logo" />
+      </div>
 
-  <h1>1. Introduction</h1>
-  <p>
-    The intent of this policy is to establish and support a formal Business Continuity Management ({{organization_abbreviation}}) program framework to enable {{organization_abbreviation}} to continue business operations during foreseen or unforeseen events that impact business processes.
-  </p>
-  <p>
-    This policy is the foundation of {{organization_abbreviation}}’s Business Continuity Management program. This document establishes minimum requirements and supporting strategies to ensure that the business can provide essential business processes in the event of a disruption to the {{organization_name}}, no matter the cause (Manmade or Nature), including:
-  </p>
-  <ol>
-    <li>Order Processing</li>
-    <li>Receiving</li>
-    <li>Distribution and Logistics</li>
-    <li>Finance</li>
-    <li>Human Resources</li>
-    <li>Legal</li>
-    <li>Facilities</li>
-    <li>Information Technology</li>
-  </ol>
+      <h1 class="document-title">Disaster Recovery Plan</h1>
 
-  <h1>2. Definitions</h1>
-  <p>
-    Refer to the Business Continuity Plan &amp; Disaster Recovery Glossary in the Business Continuity Standard for terms used in this and other Business Continuity Management, Disaster Recovery and Crisis Management policies.
-  </p>
+      <div class="header-images">
+        <img src="https://myfiles.space/user_files/277678_9bdb6c67f274d37c/1751599563_helios-bc-policy-template/1751599563_helios-bc-policy-template-3.png"
+          alt="Header graphic" />
+      </div>
+    </header>
 
-  <h1>3. Compliance &amp; Reporting</h1>
-  <ul>
-    <li>Business Continuity Management ({{organization_abbreviation}}) Program Governance</li>
-    <li>A policy has been developed, and documented detailing how {{organization_abbreviation}} will manage, and control identified risks to the Business Continuity (BC) of the Enterprise.</li>
-    <li>The {{organization_abbreviation}} policy will be reviewed and updated at least every 12 months or as operational changes occur.</li>
-    <li>Business Continuity Plans ({{organization_abbreviation}}) must be developed and maintained for each critical functional area of the business as determined by the BIA ({{organization_abbreviation}}).</li>
-    <li>Plans must be reviewed and updated on an annual basis to reflect the current operating environment.</li>
-    <li>The {{organization_abbreviation}} testing program and test results must be reviewed yearly and deficiencies prioritized and addressed. These tests include Business Continuity, Disaster Recovery and Crisis Management.</li>
-    <li>Employees must be trained and made aware of their roles in the implementation of the Business Continuity, Disaster Recovery and Crisis Management Plans.</li>
-  </ul>
+    <div class="confidential-notice">
+      <p>CONFIDENTIAL — For Internal Use Only</p>
+      <p class="confidential-description">
+        This document contains sensitive and proprietary information intended exclusively for internal stakeholders.
+        Any unauthorized access, reproduction, or distribution is strictly prohibited and may lead to legal or
+        disciplinary actions.
+      </p>
+    </div>
 
-  <div class="page-break"></div>
+    <div class="document-info">
+      <p>This document contains proprietary and confidential information. Distribution is restricted to authorized
+        personnel only.</p>
+      <p>Document Classification: <strong>CONFIDENTIAL</strong> © 2025 Trillisent. All rights reserved.</p>
+    </div>
 
-  <h1>4. Identification of Key Stakeholders</h1>
-  <p>
-    A list of key internal and external stakeholders are identified, documented and maintained.<br>
-    The Business Continuity (BC) Stakeholder list, consisting of internal stakeholders, is reviewed and, if necessary updated, minimally every 12 months.<br>
-    The External key Stakeholder list will be reviewed and, if necessary updated, at least once in every 12 months.
-  </p>
-
-  <h1>5. Responsibilities</h1>
-  <p>The BC Program Executive (or designee) is responsible for:</p>
-  <ul>
-    <li>Identifying and maintaining a list of internal BC stakeholders responsible for each of the following areas of planning:
+    <nav class="toc" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
       <ul>
-        <li>Site Level</li>
-        <li>Business Unit Level</li>
-        <li>Functional Level</li>
-        <li>Vendor Level</li>
-        <li>Ensuring the requirements for a successful BC Program are in place:</li>
-        <li>Senior Management Sponsorship</li>
-        <li>Program funding (Budget)</li>
-        <li>BIA (initial and yearly)</li>
-        <li>Incident (IT Security)/Crisis Management</li>
-        <li>Disaster Recovery Planning (technology)</li>
-        <li>Critical Vendors are identified and integrated into the BC Program planning efforts</li>
-        <li>Maintain the Risk Register for sites serviced by the {{organization_name}}</li>
-        <li>Provide Risk and Impact analysis to the BC Steering Committee related to Natural and Manmade potential or active threats</li>
-        <li>Develop, publish and collaborate on Testing schedules for Business Continuity (BC), Disaster Recovery (DR) and Crisis Management (CM).</li>
-        <li>Provide Business Plan Owners with guidance and assistance in development, review and updates to the BC, DR, and CM Plans (in Fusion BC Software)</li>
+        <li><a href="#revision-history">XYZ Organization IT Disaster Recovery Plan Revision History</a></li>
+        <li><a href="#statement-of-intent">Information Technology Statement of Intent</a></li>
+        <li><a href="#policy-statement">Policy Statement</a></li>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#key-personnel">Key Personnel Contact Info</a></li>
+        <li><a href="#notification-tree">Notification Calling Tree</a></li>
+        <li><a href="#external-contacts">External Contacts</a></li>
+        <li><a href="#external-contacts-tree">External Contacts Calling Tree</a></li>
+        <li><a href="#plan-overview">1 Plan Overview</a></li>
+        <li><a href="#plan-updating">1.1 Plan Updating</a></li>
+        <li><a href="#plan-documentation">1.2 Plan Documentation Storage</a></li>
+        <li><a href="#backup-strategy">1.3 Backup Strategy</a></li>
+        <li><a href="#risk-management">1.4 Risk Management</a></li>
+        <li><a href="#emergency">2 Emergency</a></li>
+        <li><a href="#alert-escalation">2.1 Alert, escalation and plan invocation</a></li>
+        <li><a href="#triggering-events">2.1.1 Plan Triggering Events</a></li>
+        <li><a href="#assembly-points">2.2.2 Assembly Points</a></li>
+        <li><a href="#activation-emergency">2.2.3 Activation of Emergency Response Team</a></li>
+        <li><a href="#disaster-recovery-team">2.3 Disaster Recovery Team</a></li>
+        <li><a href="#emergency-alert-escalation">2.4 Emergency Alert, Escalation and DRP Activation</a></li>
+        <li><a href="#emergency-alert">2.4.1 Emergency Alert</a></li>
+        <li><a href="#dr-procedures">2.4.2 DR Procedures for Management</a></li>
+        <li><a href="#contact-employees">2.4.3 Contact with Employees</a></li>
+        <li><a href="#backup-staff">2.4.4 Backup Staff</a></li>
+        <li><a href="#recorded-messages">2.4.5 Recorded Messages / Updates</a></li>
+        <li><a href="#alternate-recovery">2.3.7 Alternate Recovery Facilities / Hot Site</a></li>
+        <li><a href="#personnel-notification">2.3.8 Personnel and Family Notification</a></li>
+        <li><a href="#media">3 Media</a></li>
+        <li><a href="#media-contact">3.1 Media Contact</a></li>
+        <li><a href="#media-strategies">3.2 Media Strategies</a></li>
+        <li><a href="#media-team">3.3 Media Team</a></li>
+        <li><a href="#media-rules">3.4 Rules for Dealing with Media</a></li>
+        <li><a href="#insurance">4 Insurance</a></li>
+        <li><a href="#financial-legal">5 Financial and Legal Issues</a></li>
+        <li><a href="#financial-assessment">5.1 Financial Assessment</a></li>
+        <li><a href="#financial-requirements">5.2 Financial Requirements</a></li>
+        <li><a href="#legal-actions">5.3 Legal Actions</a></li>
+        <li><a href="#drp-exercising">6 DRP Exercising</a></li>
+        <li><a href="#appendix-a">Appendix A -- Technology Disaster Recovery Plan</a></li>
+        <li><a href="#templates">Templates Disaster Recovery Plan for &lt;System One&gt;</a></li>
+        <li><a href="#system-two">Disaster Recovery Plan for &lt;System Two&gt;</a></li>
+        <li><a href="#lan">Disaster Recovery Plan for Local Area Network (LAN)</a></li>
+        <li><a href="#wan">Disaster Recovery Plan for Wide Area Network (WAN)</a></li>
+        <li><a href="#remote-connectivity">Disaster Recovery Plan for Remote Connectivity</a></li>
+        <li><a href="#voice-communications">Disaster Recovery Plan for Voice Communications</a></li>
+        <li><a href="#appendix-b">Appendix B -- Suggested Forms</a></li>
+        <li><a href="#damage-assessment">Damage Assessment Form</a></li>
+        <li><a href="#management-dr">Management of DR Activities Form</a></li>
+        <li><a href="#event-recording">Disaster Recovery Event Recording Form</a></li>
+        <li><a href="#activity-report">Disaster Recovery Activity Report Form</a></li>
+        <li><a href="#mobilizing-dr">Mobilizing the Disaster Recovery Team Form</a></li>
+        <li><a href="#mobilizing-business">Mobilizing the Business Recovery Team Form</a></li>
+        <li><a href="#monitoring-progress">Monitoring Business Recovery Task Progress Form</a></li>
+        <li><a href="#preparing-report">Preparing the Business Recovery Report Form</a></li>
+        <li><a href="#communications-form">Communications Form</a></li>
+        <li><a href="#returning-operations">Returning Recovered Business Operations to Business Unit Leadership</a></li>
+        <li><a href="#process-completion">Business Process/Function Recovery Completion Form</a></li>
       </ul>
-    </li>
-  </ul>
+    </nav>
 
-  <h1>6. The BC Executive Sponsor is responsible for:</h1>
-  <ul>
-    <li>Review of the BC, DR and CM Program efforts</li>
-    <li>Provide a point of escalation for roadblocks to the Program</li>
-    <li>Provide leadership and communicate the needs of the {{organization_name}} to the Program Executive (Change, Additions, Deletions and Direction)</li>
-  </ul>
+    <!-- Example Section -->
+    <section id="statement-of-intent">
+      <h1>Information Technology Statement of Intent</h1>
+      <p>This document delineates our policies and procedures for technology disaster recovery, as well as our
+        process-level plans for recovering critical technology platforms and the telecommunications infrastructure.
+        This document summarizes our recommended procedures. In the event of an actual emergency situation,
+        modifications to this document may be made to ensure physical safety of our people, our systems, and our data.
+      </p>
+      <p>Our mission is to ensure information system uptime, data integrity and availability, and business continuity.
+      </p>
+    </section>
 
-  <h1>7. The BC/DR/CM Steering Committee is responsible for:</h1>
-  <ul>
-    <li>Publishing policy and standards/guidance for Business Continuity, Disaster Recovery and Crisis Management.</li>
-    <li>Approving the list of internal BC, DR and CM stakeholders</li>
-    <li>Identifying and maintaining a list of key external stakeholders such as investors, regulators, ratings agencies, distributors, and consumers</li>
-    <li>Provide a point of escalation for planning, training, testing and mitigation efforts</li>
-    <li>Review and Approve the Business Continuity (BC) Program Risk Register as changes occur or at least every 12 Months</li>
-    <li>Review and approval of Program efforts (BC/DR/CM Plans, {{organization_abbreviation}} and Testing) yearly</li>
-    <li>Allocating knowledgeable personnel and enough financial resources to properly implement and manage the program.</li>
-    <li>Reporting status and issues to Risk Committee</li>
-  </ul>
+    <section id="policy-statement">
+      <h1>Policy Statement</h1>
+      <p>Corporate management has approved the following policy statement:</p>
+      <ul>
+        <li>The company shall develop a comprehensive IT disaster recovery plan.</li>
+        <li>A formal risk assessment shall be undertaken to determine the requirements for the disaster recovery
+          plan.</li>
+        <li>The disaster recovery plan should cover all essential and critical infrastructure elements, systems and
+          networks, in accordance with key business activities.</li>
+        <li>The disaster recovery plan should be periodically tested in a simulated environment to ensure that it can
+          be implemented in emergency situations and that the management and staff understand how it is to be executed.
+        </li>
+        <li>All staff must be made aware of the disaster recovery plan and their own respective roles.</li>
+        <li>The disaster recovery plan is to be kept up to date to take into account changing circumstances.</li>
+      </ul>
+    </section>
 
-  <h1>8. The BC Plan Owner (or Designee) is responsible for:</h1>
-  <ul>
-    <li>Validate that all Departmental Staff have reviewed and attest to completion of Training in BC, DR (as necessary) and CM according to assigned responsibilities (identified in the Plans for the department/function)</li>
-    <li>Conducting yearly reviews and updates of the Department plans to ensure they correctly reflect the manner functions are performed. Review and as needed modify the Business Impacts ({{organization_abbreviation}}) on the functions performed, the resources required to maintain or recover the function and that the Recovery Time Objectives ({{organization_abbreviation}}) and Recovery Point Objectives ({{organization_abbreviation}}) are met</li>
-    <li>Identification and review of internal and external dependencies for their functions both up and downstream</li>
-    <li>Review and modify as necessary the departments Crisis Call list</li>
-    <li>Participate and confirm resources are made available for yearly Business Continuity, Disaster Recovery (as needed) and Crisis Management Testing efforts</li>
-    <li>Review and provide approval for their respective BC Plans yearly</li>
-    <li>To Review the Risk Register elements for their office to understand the areas of concern.</li>
-  </ul>
+    <section id="objectives">
+      <h1>Objectives</h1>
+      <p>The principal objective of the disaster recovery program is to develop, test and document a well-structured
+        and easily understood plan which will help the company recover as quickly and effectively as possible from an
+        unforeseen disaster or emergency which interrupts information systems and business operations. Additional
+        objectives include the following:</p>
+      <ul>
+        <li>The need to ensure that all employees fully understand their duties in implementing such a plan</li>
+        <li>The need to ensure that operational policies are adhered to within all planned activities</li>
+        <li>The need to ensure that proposed contingency arrangements are cost-effective</li>
+        <li>The need to consider implications on other company sites</li>
+        <li>Disaster recovery capabilities as applicable to key customers, vendors and others</li>
+      </ul>
+    </section>
 
-  <h1>9. Compliance</h1>
-  <p>
-    All employees and critical vendors must comply with the policies and procedures developed by the Business Continuity, Disaster Recovery and Crisis Management Program Teams.<br>
-    Communication and understanding of the requirements associated with the Business Continuity Disaster Recovery and Crisis Management program is validated through testing and recorded for all users. The Business Continuity Program is subject to internal and external audits, the results of which will be provided to the Risk Committee by the Executive Sponsor or Designee.<br>
-    {{organization_abbreviation}} will, at a minimum, assess and confirm the Business Continuity Plans (BCPs) of its critical vendors (IT and Line of Business) by reviewing the relevant documents, such as the vendor’s Crisis Management Plan ({{organization_abbreviation}} Reports etc.). If these documents are not available, then {{organization_abbreviation}} may request a Business Continuity audit.
-  </p>
+    <section id="key-personnel">
+      <h1>Key Personnel Contact Info</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Work</th>
+            <th>Mobile</th>
+            <th>Email Address</th>
+            <th>Alternate Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{#external_contacts}}<br>{{name}}</td>
+            <td>{{title}}</td>
+            <td>{{work}}</td>
+            <td>{{mobile}}</td>
+            <td>{{email_address}}</td>
+            <td>{{alternate_email}}<br>{{/external_contacts}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-  <h1>10. Policy Exceptions</h1>
-  <p>
-    Any requests for exceptions to this policy must be submitted in writing to the BC Program Executive one month prior to the date of the expected exception. Exception requests will be reviewed on a case-by-case basis and will be authorized only after written approval from the BC Steering Committee.<br>
-    The list of exceptions will be reviewed annually by the BC Steering Committee and will be used for potential amendments to this policy.
-  </p>
+    <section id="notification-tree">
+      <h1>Notification Calling Tree</h1>
+      <div class="calling-tree" aria-label="Notification Calling Tree">
+        <div class="tree-node root">
+          <div class="node-box root">
+            <div class="node-content">
+              Person<br />
+              Identifying<br />
+              Incident
+            </div>
+          </div>
+        </div>
 
-  <h1>11. Policy Maintenance</h1>
-  <p>
-    The BC Program Executive and BC Steering Committee must review and if necessary, update this policy at least every 12 months.
-  </p>
+        <div class="tree-branches">
+          <div class="branch-line main-line"></div>
 
-  <h1>12. Escalation Process</h1>
-  <p>
-    If you suspect any potential or actual violations of law or corporate policies, it is your obligation to contact {{organization_abbreviation}}’s Business Continuity Executive.
-  </p>
+          <div class="branch-group top-group">
+            <div class="branch-line horizontal"></div>
+            <div class="tree-node">
+              <div class="node-box small">Role 1</div>
+            </div>
+            <div class="branch-line vertical-up"></div>
+            <div class="tree-node">
+              <div class="node-box medium">Role 2</div>
+            </div>
+            <div class="branch-line vertical-down"></div>
+            <div class="tree-node">
+              <div class="node-box medium">Role 3</div>
+            </div>
+          </div>
 
-  <h1>13. Violation of this Policy</h1>
-  <p>
-    Failure to comply with this policy may result in disciplinary action up to and including termination of employment or contract.
-  </p>
+          <div class="branch-group middle-group">
+            <div class="branch-line horizontal"></div>
+            <div class="tree-node">
+              <div class="node-box small">Role 4</div>
+            </div>
+            <div class="branch-line vertical-up"></div>
+            <div class="tree-node">
+              <div class="node-box medium">Role 5</div>
+            </div>
+          </div>
 
-  <h1>14. Training &amp; Awareness</h1>
-  <p>
-    {{organization_abbreviation}} employees and key stakeholders in the BC Program must be aware of the role they play in development, management and role they are assigned in the event of a crisis affecting or posing a threat to {{organization_abbreviation}}. All assigned stakeholders involved must have received enough training to ensure they understand their specific duties and roles in recovering from any crisis.
-  </p>
+          <div class="branch-group bottom-group">
+            <div class="branch-line horizontal"></div>
+            <div class="tree-node">
+              <div class="node-box medium">Role 6</div>
+            </div>
+            <div class="plus-sign">+</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h1>15. Appendix A – References</h1>
+    <!-- Add other sections similarly, cleaned and structured -->
 
-  <h1>16. Relevant Standards</h1>
-  <p>
-    The following Standards were referenced and utilized in the development of the {{organization_abbreviation}} Business Continuity Policy:
-  </p>
-  <ul>
-    <li>ISO22301 International (Business Continuity Standard)</li>
-    <li>{{organization_abbreviation}} 27001 &amp; 27002 International (Security Standard)</li>
-    <li>{{organization_abbreviation}} 3100 International (Risk Management Standard)</li>
-    <li>Code of Federal Regulations ({{organization_abbreviation}}) 40</li>
-    <li>NFPA1660:2024 (US) (Business Continuity Standard)</li>
-    <li>{{organization_abbreviation}}/{{organization_abbreviation}} {{organization_abbreviation}}.01:2024 Business Continuity Management Systems</li>
-    <li>{{organization_abbreviation}} Guidance {{organization_abbreviation}}/{{organization_abbreviation}}/{{organization_abbreviation}}</li>
-    <li>{{organization_abbreviation}} IT Examination Handbook</li>
-    <li>{{organization_abbreviation}} {{organization_abbreviation}}-81-2000</li>
-    <li>The {{organization_abbreviation}} “Good Practice Guidance” (Business Continuity Planning)</li>
-  </ul>
-
-  <div class="prepared">Prepared by: Helios Resiliency Platform</div>
-  <div class="footer">Page 1 of 5</div>
+  </div>
 </body>
+
 </html>
