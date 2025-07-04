@@ -13,6 +13,7 @@
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@ckeditor/ckeditor5-react": "^9.5.0",
     "@tinymce/tinymce-react": "^6.2.1",
+    "grapesjs": "^0.22.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-quill": "^2.0.0",
